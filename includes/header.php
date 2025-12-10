@@ -4,115 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema SIADTmy - Impuesto Predial</title>
+    <title>SIADT - Módulo Predial</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Estilos SIADT -->
+    <link href="../../assets/css/siadt_styles.css" rel="stylesheet">
     <style>
-        :root {
-            --header-color: #8B0000;
-            /* Rojo Vino */
-            --sidebar-color: #f8f9fa;
-            /* Gris claro */
-            --sidebar-width: 250px;
-        }
-
+        /* Ajustes específicos para vistas internas */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: white;
+        }
+
+        .module-menu-bar {
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ccc;
+            padding: 5px 10px;
             font-size: 0.9rem;
-            background-color: #f4f6f9;
         }
 
-        .navbar-custom {
-            background-color: var(--header-color);
-            color: white;
-            z-index: 1050;
-            /* Above sidebar */
-        }
-
-        .navbar-custom .navbar-brand {
-            color: white;
-            font-weight: bold;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            position: fixed;
-            top: 56px;
-            /* Height of navbar */
-            bottom: 0;
-            left: 0;
-            z-index: 1000;
-            width: var(--sidebar-width);
-            padding: 20px 0;
-            background-color: var(--sidebar-color);
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-            overflow-y: auto;
-        }
-
-        .sidebar .nav-link {
+        .module-menu-link {
             color: #333;
-            font-weight: 500;
-            padding: 10px 20px;
+            text-decoration: none;
+            margin-right: 15px;
+            padding: 2px 5px;
         }
 
-        .sidebar .nav-link:hover,
-        .sidebar .nav-link.active {
-            color: var(--header-color);
-            background-color: #e9ecef;
-        }
-
-        .sidebar .nav-link i {
-            width: 25px;
-            text-align: center;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            padding: 20px;
-            margin-top: 56px;
-        }
-
-        /* Condensed Tables */
-        .table-condensed th,
-        .table-condensed td {
-            padding: 0.4rem;
-            font-size: 0.85rem;
+        .module-menu-link:hover {
+            background-color: #ddd;
+            border: 1px solid #999;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header / Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-landmark me-2"></i>SIADTmy
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-user-circle"></i> Admin
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Salir</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+    <!-- Header Rojo (Banner) -->
+    <div class="siadt-header d-flex justify-content-between align-items-center py-1"
+        style="font-size: 1rem; background: linear-gradient(to right, #8B0000, #b30000);">
+        <div>
+            Sistema Integrado de Administración Tributaria - SIADT v3.00 Usuario:[HAROLD] [Municipalidad Distrital de
+            Pacocha]
         </div>
-    </nav>
+        <div>
+            <a href="../../dashboard.php" class="text-white text-decoration-none border px-2">X</a>
+        </div>
+    </div>
 
-    <div class="container-fluid">
+    <!-- Barra de Menú Tipo Windows -->
+    <div class="module-menu-bar">
+        <a href="#" class="module-menu-link">Movimiento</a>
+        <a href="#" class="module-menu-link">Ventana</a>
+        <a href="../../dashboard.php" class="module-menu-link">Salir</a>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container-fluid mt-4">
+        <h4 class="mb-4 text-primary border-bottom pb-2">Módulo: IMPUESTO PREDIAL</h4>
+
+        <!-- Aquí comienza el contenido de cada página -->
         <div class="row">
