@@ -1,0 +1,100 @@
+/* assets/css/styles.css */
+
+:root {
+    --primary-color: #8B0000; /* Rojo Vino - User request */
+    --primary-hover: #a00000;
+    --secondary-color: #6c757d;
+    --background-color: #f4f6f9;
+    --header-height: 50px;
+}
+
+body {
+    background-color: var(--background-color);
+    font-size: 0.85rem; /* Compact font */
+}
+
+/* --- Header Compacto --- */
+.navbar-brand {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.navbar {
+    min-height: var(--header-height);
+    padding: 0 1rem;
+}
+.navbar-dark.bg-dark {
+    background-color: var(--primary-color) !important;
+}
+
+/* --- Sidebar --- */
+#sidebarMenu {
+    top: var(--header-height);
+}
+.sidebar .nav-link {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    color: #333;
+}
+.sidebar .nav-link.active {
+    color: var(--primary-color);
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+/* --- DataGrid Tables --- */
+.table-condensed th, .table-condensed td {
+    padding: 0.4rem 0.6rem; /* Compact rows */
+    vertical-align: middle;
+}
+.table thead th {
+    background-color: #343a40; /* Dark gray header */
+    color: #fff;
+    border-top: none;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.table-hover tbody tr:hover {
+    background-color: rgba(139, 0, 0, 0.05);
+}
+
+/* --- Forms & Cards --- */
+.card-header {
+    padding: 0.5rem 1rem;
+    background-color: #e9ecef; /* Light gray */
+    border-bottom: 1px solid #dcdcdc;
+    font-weight: bold;
+    color: #495057;
+}
+.form-label {
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #555;
+    background-color: #f8f9fa; /* Fondo gris claro en label like "Ficha Técnica" */
+    padding: 2px 5px;
+    border-radius: 3px;
+    display: table; /* Fit content */
+}
+.form-control-sm, .btn-sm {
+    border-radius: 0.2rem;
+}
+
+/* --- Action Buttons --- */
+.btn-action {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+/* --- Modal tweaks --- */
+.modal-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1rem;
+}
+.modal-title {
+    font-size: 1rem;
+}
+.btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
