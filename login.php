@@ -10,7 +10,7 @@
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Estilos SIADT -->
-    <link href="assets/css/siadt_styles.css" rel="stylesheet">
+    <link href="/Sistema_Predial_Grupo8/assets/css/siadt_styles.css?v=<?php echo time(); ?>" rel="stylesheet">
 </head>
 
 <body>

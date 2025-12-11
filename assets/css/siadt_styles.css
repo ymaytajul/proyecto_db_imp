@@ -1,22 +1,270 @@
 :root {
-    --siadt-red: #8B0000;
-    /* Rojo oscuro para header */
-    --siadt-blue: #000080;
-    /* Azul profundo para panel login */
-    --siadt-gray: #d3d3d3;
-    /* Gris para footer */
-    --siadt-text-color: #333;
+    --siadt-red: #d32f2f;
+    --siadt-header-bg: #ffffff;
+    --siadt-blue-bar: #b0c4de;
+    --siadt-blue-text: #004080;
+    --siadt-bg-gray: #c0c0c0;
+    --siadt-grid-bg: #dcdcdc;
+    --siadt-footer-blue: #003366;
+    --siadt-exit-btn: #a0522d;
+    --siadt-login-blue: #000080;
+    /* Specific for login left panel */
+}
+
+/* CRITICAL FIX: Global Box Sizing to prevent layout breakage */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body,
 html {
     height: 100%;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--siadt-bg-gray);
+    overflow: hidden;
+    /* Prevent body scroll, use inner scroll */
+    display: flex;
+    flex-direction: column;
+    /* Vertical Layout Strategy */
 }
 
-/* Header General */
+/* --- HEADER SECTION --- */
+/* Fixed height elements do not grow */
+.window-title-bar {
+    background-color: var(--siadt-red);
+    color: white;
+    padding: 2px 10px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.main-header {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-siadt {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #666;
+    margin-right: 10px;
+    letter-spacing: -2px;
+}
+
+.logo-pixels {
+    height: 30px;
+    background: linear-gradient(90deg, #003366 33%, #336699 66%, #6699cc 100%);
+    width: 150px;
+}
+
+.header-center {
+    font-size: 1.2rem;
+    color: #2F4F4F;
+    font-weight: normal;
+    text-align: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    color: #2F4F4F;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* --- MENU BAR --- */
+.menu-bar {
+    background-color: #cfd8dc;
+    color: #003366;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #999;
+    flex-shrink: 0;
+}
+
+/* --- MAIN LAYOUT (Flex Grow) --- */
+.app-container {
+    display: flex;
+    flex: 1;
+    /* Takes all remaining space */
+    padding: 10px;
+    gap: 10px;
+    min-height: 0;
+    /* Crucial for scrolling inside flex child */
+}
+
+/* LEFT SIDE (GRID) */
+.modules-area {
+    flex: 1;
+    background-color: #dcdcdc;
+    border: 2px solid white;
+    border-right-color: #888;
+    border-bottom-color: #888;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Prevent flex overflow */
+}
+
+.modules-header-strip {
+    background-color: white;
+    color: #333;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 10px;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid #999;
+    flex-shrink: 0;
+}
+
+.modules-grid {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    /* Responsive Grid */
+    grid-auto-rows: min-content;
+    gap: 15px;
+    overflow-y: auto;
+    /* Scroll ONLY here */
+    flex: 1;
+}
+
+.module-btn {
+    background-color: white;
+    border: 1px solid #000;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    transition: background-color 0.1s;
+}
+
+.module-btn:hover {
+    background-color: #e6f7ff;
+    border-color: #0056b3;
+}
+
+.module-btn i {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.module-btn span {
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.1;
+}
+
+/* RIGHT SIDE (ADMIN) */
+.admin-area {
+    width: 250px;
+    background-color: #dcdcdc;
+    border: 2px solid white;
+    border-right-color: #888;
+    border-bottom-color: #888;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.admin-header-strip {
+    background-color: white;
+    color: #333;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 10px;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid #999;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.admin-btn {
+    margin: 10px 20px;
+    background-color: white;
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.admin-btn i {
+    font-size: 3rem;
+    display: block;
+    margin: 10px auto;
+}
+
+.admin-btn span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.exit-btn {
+    /* Anchored to bottom of admin-area */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #b84d12;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-top: 2px solid #e08e60;
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    /* No longer absolute/fixed, part of flex column */
+    background-color: var(--siadt-footer-blue);
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-top: 1px solid #999;
+}
+
+.footer-link {
+    color: #add8e6;
+    text-decoration: none;
+    margin-bottom: 2px;
+}
+
+/* --- RESTORED LOGIN STYLES --- */
 .siadt-header {
     background-color: var(--siadt-red);
     color: white;
@@ -26,28 +274,30 @@ html {
     border-bottom: 2px solid #b00000;
 }
 
-/* Footer */
 .siadt-footer {
+    /* Footer for Login is different, maybe absolute is ok here or just flow */
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: var(--siadt-gray);
+    background-color: #d3d3d3;
+    /* Gray */
     color: #444;
     font-size: 0.8rem;
     padding: 5px 10px;
     border-top: 1px solid #aaa;
 }
 
-/* --- LOGIN PAGE --- */
 .login-container {
     display: flex;
-    height: calc(100% - 50px);
-    /* Restar altura aproximada header */
+    flex: 1;
+    /* Match flex layout */
+    height: 100%;
+    /* Fill space */
 }
 
 .login-left-panel {
     width: 35%;
-    background-color: var(--siadt-blue);
+    background-color: var(--siadt-login-blue);
     color: white;
     padding: 40px;
     display: flex;
@@ -88,110 +338,4 @@ html {
     padding-bottom: 10px;
     margin-bottom: 20px;
     font-weight: bold;
-}
-
-/* --- DASHBOARD --- */
-.dashboard-title-bar {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #ddd;
-    padding: 5px 15px;
-    color: #0056b3;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dashboard-container {
-    display: flex;
-    height: calc(100% - 90px);
-    /* Ajustar según headers/footers */
-}
-
-.dashboard-grid-area {
-    flex: 1;
-    background-color: #ccc;
-    /* Fondo gris vista SIADT */
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    gap: 15px;
-}
-
-.dashboard-sidebar-right {
-    width: 250px;
-    background-color: #e0e0e0;
-    border-left: 2px solid white;
-    padding: 10px;
-}
-
-.grid-btn {
-    width: 120px;
-    height: 120px;
-    background-color: white;
-    border: 1px solid #999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.1s;
-    text-decoration: none;
-    color: black;
-}
-
-.grid-btn:hover {
-    transform: scale(1.02);
-    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
-    background-color: #f9f9f9;
-}
-
-.grid-btn i {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.grid-btn span {
-    font-size: 0.8rem;
-    font-weight: bold;
-    line-height: 1.1;
-}
-
-.right-panel-btn {
-    display: block;
-    width: 100%;
-    background-color: white;
-    border: 1px solid #999;
-    padding: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.right-panel-btn i {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.logout-btn {
-    background-color: #d9534f;
-    color: white;
-    border: 1px solid #d43f3a;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    position: absolute;
-    bottom: 30px;
-    /* Sobre el footer */
-    right: 0;
-    width: 250px;
-    /* Ancho sidebar */
 }

@@ -10,7 +10,7 @@
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Estilos SIADT -->
-    <link href="../../assets/css/siadt_styles.css" rel="stylesheet">
+    <link href="/Sistema_Predial_Grupo8/assets/css/siadt_styles.css?v=<?php echo time(); ?>" rel="stylesheet">
     <style>
         /* Ajustes específicos para vistas internas */
         body {
@@ -53,15 +53,36 @@
     </div>
 
     <!-- Barra de Menú Tipo Windows -->
-    <div class="module-menu-bar">
-        <a href="#" class="module-menu-link">Movimiento</a>
+    <div class="module-menu-bar d-flex">
+        <?php if (isset($menu_movimiento) && is_array($menu_movimiento)): ?>
+            <div class="dropdown">
+                <a class="module-menu-link dropdown-toggle" href="#" role="button" id="dropdownMovimiento"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Movimiento
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMovimiento"
+                    style="border-radius: 0; margin-top: 0; font-size: 0.9rem;">
+                    <?php foreach ($menu_movimiento as $item): ?>
+                        <li><a class="dropdown-item" href="<?php echo $item['url'] ?? '#'; ?>"><?php echo $item['label']; ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php else: ?>
+            <a href="#" class="module-menu-link">Movimiento</a>
+        <?php endif; ?>
+
         <a href="#" class="module-menu-link">Ventana</a>
         <a href="../../dashboard.php" class="module-menu-link">Salir</a>
     </div>
 
     <!-- Contenido Principal -->
     <div class="container-fluid mt-4">
-        <h4 class="mb-4 text-primary border-bottom pb-2">Módulo: IMPUESTO PREDIAL</h4>
+        <?php if (!isset($hide_default_title) || !$hide_default_title): ?>
+            <h4 class="mb-4 text-primary border-bottom pb-2">Módulo:
+                <?php echo isset($module_title) ? $module_title : 'IMPUESTO PREDIAL'; ?>
+            </h4>
+        <?php endif; ?>
 
         <!-- Aquí comienza el contenido de cada página -->
         <div class="row">
